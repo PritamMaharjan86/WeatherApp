@@ -23,9 +23,9 @@ const Weather = () => {
     }
   };
 
-  
+
   const getWeatherBackground = () => {
-    if (!weatherReport.weather) return 'clear-sky'; 
+    if (!weatherReport.weather) return 'clear-sky';
 
     const weather = weatherReport.weather[0].main.toLowerCase();
 
@@ -37,7 +37,7 @@ const Weather = () => {
       case 'clouds':
         return 'cloudy';
       default:
-        return 'clear-sky'; 
+        return 'clear-sky';
     }
   };
 
@@ -64,18 +64,22 @@ const Weather = () => {
         {weatherReport.name && (
           <div className="mt-6 p-6 bg-white bg-opacity-50 rounded-lg shadow-lg">
             <div className="mb-4 text-center">
+
+
               <p className="text-3xl font-bold text-yellow-300">
                 {weatherReport.name}
               </p>
               <p className="text-5xl font-bold text-blue-300">
                 {(weatherReport.main.temp - 273.15).toFixed(1)}°C
               </p>
+              <div className='flex justify-center'>
+              <img src={`http://openweathermap.org/img/wn/${weatherReport.weather[0].icon}@2x.png`} alt="Weather icon" /></div>
               <p className="text-xl text-gray-300">
                 {weatherReport.weather[0].main}
               </p>
             </div>
 
-       
+
             <div className="grid grid-cols-2 gap-4 p-4 rounded-lg">
               <div className="text-center">
                 <p className="text-lg text-gray-200">Humidity</p>
@@ -87,7 +91,7 @@ const Weather = () => {
               </div>
             </div>
 
-            
+
             <div className="grid grid-cols-2 gap-2 p-4 rounded-lg">
               <div className="text-center">
                 <p className="text-lg text-gray-200">Temp Max</p>
@@ -103,7 +107,7 @@ const Weather = () => {
               </div>
             </div>
 
-    
+
             <div className="grid grid-cols-2 gap-4 p-4 rounded-lg">
               <div className="text-center">
                 <p className="text-lg text-black">Wind Speed</p>

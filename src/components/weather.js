@@ -8,9 +8,10 @@ const Weather = () => {
     setLocation(e.target.value);
   };
 
+  const apikey = process.env.REACT_APP_API_KEY;
+
   const handleWeather = async () => {
 
-    const apikey = process.env.API_KEY
     try {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apikey}`
@@ -22,9 +23,9 @@ const Weather = () => {
     }
   };
 
-  // Function to apply dynamic background based on weather
+  
   const getWeatherBackground = () => {
-    if (!weatherReport.weather) return 'clear-sky'; // Default class if no data
+    if (!weatherReport.weather) return 'clear-sky'; 
 
     const weather = weatherReport.weather[0].main.toLowerCase();
 
@@ -36,7 +37,7 @@ const Weather = () => {
       case 'clouds':
         return 'cloudy';
       default:
-        return 'clear-sky'; // fallback
+        return 'clear-sky'; 
     }
   };
 
@@ -74,7 +75,7 @@ const Weather = () => {
               </p>
             </div>
 
-            {/* Weather Details */}
+       
             <div className="grid grid-cols-2 gap-4 p-4 rounded-lg">
               <div className="text-center">
                 <p className="text-lg text-gray-200">Humidity</p>
@@ -86,7 +87,7 @@ const Weather = () => {
               </div>
             </div>
 
-            {/* Temperature Details */}
+            
             <div className="grid grid-cols-2 gap-2 p-4 rounded-lg">
               <div className="text-center">
                 <p className="text-lg text-gray-200">Temp Max</p>
@@ -102,10 +103,10 @@ const Weather = () => {
               </div>
             </div>
 
-            {/* Wind Details */}
+    
             <div className="grid grid-cols-2 gap-4 p-4 rounded-lg">
               <div className="text-center">
-                <p className="text-lg text-gray-200">Wind Speed</p>
+                <p className="text-lg text-black">Wind Speed</p>
                 <p className="text-2xl font-bold text-blue-300">
                   {weatherReport.wind.speed} m/s
                 </p>

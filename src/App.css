@@ -1,21 +1,21 @@
 .clear-sky {
-  background-image: linear-gradient(to top, #87CEEB, #1E90FF);
+  background-image: linear-gradient(to top, #87ceeb, #1e90ff);
 }
 
 .rainy {
-  background-image: linear-gradient(to top, #4A90E2, #2C3E50);
+  background-image: linear-gradient(to top, #4a90e2, #2c3e50);
 }
 
 .cloudy {
-  background-image: linear-gradient(to top, #B0C4DE, #778899);
+  background-image: linear-gradient(to top, #b0c4de, #778899);
 }
 
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
 }
 
-/* Glassmorphism Effect */
 .glass-card {
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -25,17 +25,31 @@ body, html {
   color: white;
 }
 
-/* Typography Enhancements */
 h1 {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   letter-spacing: 2px;
 }
 
 input {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 button {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   letter-spacing: 1px;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }

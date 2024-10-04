@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import Loader from './loader';
 
 const Weather = () => {
   const [location, setLocation] = useState('');
   const [weatherReport, setWeatherReport] = useState({});
+  const [loading, setLoading] = useState(false);
+
 
   const handleLocation = (e) => {
     const value = e.target.value;
@@ -14,15 +17,20 @@ const Weather = () => {
   const apikey = process.env.REACT_APP_API_KEY;
 
   const handleWeather = async () => {
-
+    setLoading(true);
     try {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apikey}`
       );
       const data = await res.json();
       setWeatherReport(data);
+
     } catch (error) {
       console.error('Error while fetching data', error);
+
+    }
+    finally {
+      setLoading(false);
     }
   };
 
@@ -53,13 +61,23 @@ const Weather = () => {
 
 
 
-        <input
-          value={location}
-          type="text"
-          onChange={handleLocation}
-          className="font-amaranth w-full mb-4 p-3 text-lg border rounded-lg shadow-sm bg-opacity-80 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500"
-          placeholder="Enter a location"
-        />
+        <div className="relative">
+          <input
+            value={location}
+            type="text"
+            onChange={handleLocation}
+            className="font-amaranth w-full mb-4 p-3 text-lg border rounded-lg shadow-sm bg-opacity-80 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500 pr-10"
+            placeholder="Enter a location"
+          />
+          {loading && (
+            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pb-3">
+              <Loader />
+            </div>
+          )}
+        </div>
+
+
+
         <button
           onClick={handleWeather}
           className="font-amaranth w-full py-3 text-white bg-gradient-to-r from-blue-400 to-indigo-600 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-blue-500 hover:to-indigo-700 transition-all font-bold text-xl"

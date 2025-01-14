@@ -65,7 +65,7 @@ const Weather = () => {
   };
 
   return (
-    <div className={`flex flex-col items-center h-screen ${getWeatherBackground()} bg-cover bg-center`}>
+    <div className={`flex flex-col items-center h-max ${getWeatherBackground()} bg-cover bg-center p-5`}>
 
       <div className="glass-card w-full max-w-lg p-8 bg-white shadow-2xl rounded-lg backdrop-blur-md">
         <h1 className="font-amaranth text-5xl font-extrabold text-center text-yellow-300 mb-6 tracking-widest drop-shadow-lg hover:drop-shadow-2xl transition-all duration-500 ease-in-out transform hover:scale-105 p-4 rounded-lg">
@@ -74,13 +74,15 @@ const Weather = () => {
 
         {favorites.length > 0 && (
           <div className="bg-white bg-opacity-50 p-4 rounded-lg shadow-lg mb-10">
-            <h2 className="text-2xl font-bold mb-4">Favorite Locations</h2>
+            <h2 className="text-2xl font-bold mb-4 text-yellow-200">Favorite Locations</h2>
             <ul className="space-y-2">
               {favorites.map((fav, index) => (
-                <li key={index} className="text-lg font-medium">
-                  {fav.name}: {fav.temp}°C
+                <li key={index}>
+                  <span className='font-bold text-xl'>{fav.name} : </span>
+                  <span className="text-blue-400 text-xl font-bold">{fav.temp}°C</span>
                 </li>
               ))}
+
             </ul>
           </div>
         )}
@@ -110,15 +112,15 @@ const Weather = () => {
         </button>
 
         {weatherReport.name && (
-          <div className="mt-6 p-6 bg-white bg-opacity-50 rounded-lg shadow-lg">
+          <div className="mt-6 p-6 bg-gray-200 bg-opacity-50 rounded-lg shadow-lg">
+
+            <CiStar onClick={addToFavorites} className="text-2xl float-end text-yellow-200 font-bold " />
+
             <div className="mb-4 text-center">
-              <p className="text-3xl text-yellow-200 font-amaranth">{weatherReport.name}</p>
-              <button
-                onClick={addToFavorites}
-                className="absolute right-2 top-2 p-2 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 focus:outline-noner"
-              >
-                <CiStar className="text-xl" />
-              </button>
+
+              <p className="text-3xl text-yellow-200 font-amaranth p-5">{weatherReport.name}</p>
+
+
               <p className="text-5xl font-bold text-blue-400 font-amaranth">
                 {(weatherReport.main.temp - 273.15).toFixed(1)}°C
               </p>
@@ -133,7 +135,7 @@ const Weather = () => {
 
             <div className="grid grid-cols-2 gap-4 pt-4 rounded-lg font-amaranth">
               <div className="text-center">
-                <p className="text-lg">Humidity</p>
+                <p className="text-lg ">Humidity</p>
                 <p className="text-2xl font-bold text-blue-400">{weatherReport.main.humidity}%</p>
               </div>
               <div className="text-center">

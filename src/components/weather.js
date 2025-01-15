@@ -74,12 +74,12 @@ const Weather = () => {
 
         {favorites.length > 0 && (
           <div className="bg-white bg-opacity-50 p-4 rounded-lg shadow-lg mb-10">
-            <h2 className="text-2xl font-bold mb-4 text-yellow-200">Favorite Locations</h2>
+            <h2 className="text-2xl font-bold mb-4 text-yellow-200 font-amaranth">Favorite Locations</h2>
             <ul className="space-y-2">
               {favorites.map((fav, index) => (
                 <li key={index}>
-                  <span className='font-bold text-xl'>{fav.name} : </span>
-                  <span className="text-blue-400 text-xl font-bold">{fav.temp}°C</span>
+                  <span className='font-bold text-xl font-amaranth'>{fav.name} : </span>
+                  <span className="text-blue-400 text-xl font-bold font-amaranth">{fav.temp}°C</span>
                 </li>
               ))}
 
@@ -104,12 +104,14 @@ const Weather = () => {
           )}
         </div>
 
-        <button
-          onClick={handleWeather}
-          className="font-amaranth w-full py-3 text-white bg-gradient-to-r from-blue-400 to-indigo-600 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-blue-500 hover:to-indigo-700 transition-all font-bold text-xl"
-        >
-          Get Weather
-        </button>
+        <div className="flex justify-center items-center">
+          <button
+            onClick={handleWeather}
+            className="font-amaranth w-1/3 py-3 text-white bg-gradient-to-r from-blue-400 to-indigo-600 rounded-lg shadow-md hover:bg-gradient-to-r hover:from-blue-500 hover:to-indigo-700 transition-all font-bold text-xl "
+          >
+            Get Weather
+          </button>
+        </div>
 
         {weatherReport.name && (
           <div className="mt-6 p-6 bg-gray-200 bg-opacity-50 rounded-lg shadow-lg">

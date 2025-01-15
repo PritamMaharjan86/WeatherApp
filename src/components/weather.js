@@ -65,7 +65,7 @@ const Weather = () => {
   };
 
   return (
-    <div className={`flex flex-col items-center h-max ${getWeatherBackground()} bg-cover bg-center p-5`}>
+    <div className={`flex flex-col items-center h-full ${getWeatherBackground()} bg-cover bg-center p-5`}>
 
       <div className="glass-card w-full max-w-lg p-8 bg-white shadow-2xl rounded-lg backdrop-blur-md">
         <h1 className="font-amaranth text-5xl font-extrabold text-center text-yellow-300 mb-6 tracking-widest drop-shadow-lg hover:drop-shadow-2xl transition-all duration-500 ease-in-out transform hover:scale-105 p-4 rounded-lg">

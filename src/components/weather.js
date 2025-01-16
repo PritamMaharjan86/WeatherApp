@@ -7,6 +7,7 @@ const Weather = () => {
   const [weatherReport, setWeatherReport] = useState({});
   const [loading, setLoading] = useState(false);
   const [favorites, setFavorites] = useState([]);
+  const [clicked, setClicked] = useState(false);
 
   const handleLocation = (e) => {
     const value = e.target.value;
@@ -44,6 +45,9 @@ const Weather = () => {
         name: weatherReport.name,
         temp: (weatherReport.main.temp - 273.15).toFixed(1)
       }]);
+      setClicked(true);  // Set clicked to true when added to favorites
+    } else {
+      setClicked(false);  // Reset to false if removed or clicked again
     }
   };
 
@@ -65,14 +69,14 @@ const Weather = () => {
   };
 
   return (
-    <div className={`flex flex-col items-center h-full ${getWeatherBackground()} bg-cover bg-center p-5`}>
+    <div className={`flex flex-col items-center h-max ${getWeatherBackground()} bg-cover bg-center p-5`}>
 
       <div className="glass-card w-full max-w-lg p-8 bg-white shadow-2xl rounded-lg backdrop-blur-md">
         <h1 className="font-amaranth text-5xl font-extrabold text-center text-yellow-300 mb-6 tracking-widest drop-shadow-lg hover:drop-shadow-2xl transition-all duration-500 ease-in-out transform hover:scale-105 p-4 rounded-lg">
           WEATHER APP
         </h1>
 
-        {favorites.length > 0 && (
+        {clicked && favorites.length > 0 && (
           <div className="bg-white bg-opacity-50 p-4 rounded-lg shadow-lg mb-10">
             <h2 className="text-2xl font-bold mb-4 text-yellow-200 font-amaranth">Favorite Locations</h2>
             <ul className="space-y-2">
@@ -82,7 +86,6 @@ const Weather = () => {
                   <span className="text-blue-400 text-xl font-bold font-amaranth">{fav.temp}°C</span>
                 </li>
               ))}
-
             </ul>
           </div>
         )}
@@ -95,7 +98,6 @@ const Weather = () => {
             className="font-amaranth w-full mb-4 p-3 text-lg border rounded-lg shadow-sm bg-opacity-80 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500 pr-10"
             placeholder="Enter a location"
           />
-
 
           {loading && (
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pb-3">
@@ -116,13 +118,13 @@ const Weather = () => {
         {weatherReport.name && (
           <div className="mt-6 p-6 bg-gray-200 bg-opacity-50 rounded-lg shadow-lg">
 
-            <CiStar onClick={addToFavorites} className="text-2xl float-end text-yellow-200 font-bold " />
+            <CiStar
+              onClick={addToFavorites}
+              className={`text-2xl float-end font-bold ${clicked ? 'text-red-500' : 'text-yellow-200'}`}  // Change color based on clicked state
+            />
 
             <div className="mb-4 text-center">
-
               <p className="text-3xl text-yellow-200 font-amaranth p-5">{weatherReport.name}</p>
-
-
               <p className="text-5xl font-bold text-blue-400 font-amaranth">
                 {(weatherReport.main.temp - 273.15).toFixed(1)}°C
               </p>

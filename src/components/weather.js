@@ -45,9 +45,9 @@ const Weather = () => {
         name: weatherReport.name,
         temp: (weatherReport.main.temp - 273.15).toFixed(1)
       }]);
-      setClicked(true);  // Set clicked to true when added to favorites
+      setClicked(true);  
     } else {
-      setClicked(false);  // Reset to false if removed or clicked again
+      setClicked(false);  
     }
   };
 
@@ -120,7 +120,7 @@ const Weather = () => {
 
             <CiStar
               onClick={addToFavorites}
-              className={`text-2xl float-end font-bold ${clicked ? 'text-red-500' : 'text-yellow-200'}`}  // Change color based on clicked state
+              className={`text-2xl float-end font-bold ${clicked ? 'text-red-500' : 'text-yellow-200'}`}  
             />
 
             <div className="mb-4 text-center">

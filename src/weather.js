@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Loader from './loader';
+import Loader from './components/loader';
 import { CiStar } from "react-icons/ci";
 
 const Weather = () => {

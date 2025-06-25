@@ -10,6 +10,11 @@
   background-image: linear-gradient(to top, #b0c4de, #778899);
 }
 
+.sunny
+{
+   background-image: linear-gradient(to top, #f2b90e, #e7ef09);
+}
+
 body,
 html {
   height: 100%;

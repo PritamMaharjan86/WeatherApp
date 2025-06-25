@@ -121,7 +121,7 @@ const Weather = () => {
 
 
       {weatherReport.name && (
-        <div className="mt-4 p-4 bg-gray-200 bg-opacity-50 rounded-lg shadow-lg">
+        <div className="mt-4 p-4 bg-gray-200 bg-opacity-50 rounded-3xl shadow-lg">
 
           <CiStar
             onClick={addToFavorites}
@@ -145,7 +145,8 @@ const Weather = () => {
             />
           </div>
 
-          <div className='flex flex-row w-full border-black p-4 mt-5 rounded-xl justify-between bg-gray-300 shadow-xl'>
+
+          <div className='flex flex-row w-full p-4 mt-5 rounded-xl justify-between bg-gray-300 shadow-xl'>
 
 
             <div className='flex flex-col items-center'>
@@ -172,49 +173,67 @@ const Weather = () => {
 
           </div>
 
+          <div className="p-4 mt-5 rounded-xl bg-gray-300 shadow-xl flex flex-col items-center justify-center space-y-4 gap-y-2">
+
+            <div className="flex flex-row w-full justify-center items-center">
+              <div className="flex flex-col items-center w-1/2">
+                <p>Sunrise</p>
+                <p className="text-md font-bold text-blue-400">
+                  {
+                    new Intl.DateTimeFormat('en-US', {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      hour12: true,
+                      timeZone: 'UTC'
+                    }).format((weatherReport.sys.sunrise + weatherReport.timezone) * 1000)
+                  }
+                </p>
+              </div>
+
+              <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-500 to-transparent mx-2" />
+
+              <div className="flex flex-col items-center w-1/2">
+                <p>Sunset</p>
+                <p className="text-md font-bold text-blue-400">
+                  {
+                    new Intl.DateTimeFormat('en-US', {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      hour12: true,
+                      timeZone: 'UTC'
+                    }).format((weatherReport.sys.sunset + weatherReport.timezone) * 1000)
+                  }
+                </p>
+              </div>
+            </div>
 
 
-          <div className="grid grid-cols-2 gap-4 pt-4 rounded-lg font-amaranth">
-            <div className="text-center">
-              <p className="text-lg ">Sunrise</p> <p className="text-2xl font-bold text-blue-400">{
-                new Intl.DateTimeFormat('en-US', {
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  hour12: true,
-                  timeZone: 'UTC'
-                }).format((weatherReport.sys.sunrise + weatherReport.timezone) * 1000)
-              }</p>
+            <div className="flex flex-row w-full justify-center items-center">
+              <div className="flex flex-col items-center w-1/2">
+                <p>Wind Speed</p>
+                <p className="text-md font-bold text-blue-400">
+                  {weatherReport.wind.speed} m/s
+                </p>
+              </div>
+
+
+              <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-500 to-transparent mx-2" />
+
+              <div className="flex flex-col items-center w-1/2">
+                <p>Wind Dir</p>
+                <p className="text-md font-bold text-blue-400">
+                  {weatherReport.wind.deg}°
+                </p>
+              </div>
             </div>
-            <div className="text-center">
-              <p className="text-lg ">Sunset</p>
-              <p className="text-2xl font-bold text-blue-400">{
-                new Intl.DateTimeFormat('en-US', {
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  hour12: true,
-                  timeZone: 'UTC'
-                }).format((weatherReport.sys.sunset + weatherReport.timezone) * 1000)
-              }</p>
-            </div>
-        
-            <div className="text-center">
-              <p className="text-lg">Pressure</p>
-              <p className="text-2xl font-bold text-blue-400">{weatherReport.main.pressure} hPa</p>
-            </div>
+
           </div>
 
-          <div className="grid grid-cols-2 gap-4 p-4 rounded-lg font-amaranth">
-            <div className="text-center">
-              <p className="text-lg">Wind Speed</p>
-              <p className="text-2xl font-bold text-blue-400">
-                {weatherReport.wind.speed} m/s
-              </p>
-            </div>
-            <div className="text-center">
-              <p className="text-lg">Wind Direction</p>
-              <p className="text-2xl font-bold text-blue-400">{weatherReport.wind.deg}°</p>
-            </div>
-          </div>
+
+
+
+
+
         </div>
       )}
     </div>

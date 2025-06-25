@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Loader from './components/loader';
 import { CiStar } from "react-icons/ci";
-import { WiHumidity } from "react-icons/wi";
 import { FaTemperatureArrowUp, FaTemperatureArrowDown } from "react-icons/fa6";
 
 
@@ -150,22 +149,22 @@ const Weather = () => {
 
 
             <div className='flex flex-col items-center'>
-              <p className="text-2xl text-blue-600"><WiHumidity /></p>
-              <p className="text-lg font-bold text-black">{weatherReport.main.humidity}%</p>
+              <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750843411/weather/humidity_r9mzzr.png'></img></p>
+              <p className="text-md font-bold text-black">{weatherReport.main.humidity}%</p>
               <p className="text-sm text-gray-700">Humidity</p>
             </div>
 
             <div className='flex flex-col items-center'>
-              <p className="text-2xl text-red-500"><FaTemperatureArrowUp /></p>
-              <p className="text-lg font-bold text-black">
+              <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750844034/weather/high-temperature_ptwug6.png'></img></p>
+              <p className="text-md font-bold text-black">
                 {(weatherReport.main.temp_max - 273.15).toFixed(1)}°c
               </p>
               <p className="text-sm text-gray-700">Max</p>
             </div>
 
             <div className='flex flex-col items-center'>
-              <p className="text-2xl text-blue-600"><FaTemperatureArrowDown /></p>
-              <p className="text-lg font-bold text-black">
+              <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750844034/weather/low-temperature_zr5lwi.png'></img></p>
+              <p className="text-md font-bold text-black">
                 {(weatherReport.main.temp_min - 273.15).toFixed(1)}°c
               </p>
               <p className="text-sm text-gray-700">Min</p>
@@ -210,7 +209,7 @@ const Weather = () => {
 
             <div className="flex flex-row w-full justify-center items-center">
               <div className="flex flex-col items-center w-1/2">
-                <p>Wind Speed</p>
+                <p>Wind Spd</p>
                 <p className="text-md font-bold text-blue-400">
                   {weatherReport.wind.speed} m/s
                 </p>

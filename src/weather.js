@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Loader from './components/loader';
 import { CiStar } from "react-icons/ci";
-import { FaTemperatureArrowUp, FaTemperatureArrowDown } from "react-icons/fa6";
 
 
 
@@ -98,6 +97,12 @@ const Weather = () => {
           value={location}
           type="text"
           onChange={handleLocation}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              handleWeather();
+            }
+          }}
           className="font-amaranth w-full mb-4 p-3 text-lg border rounded-lg shadow-sm bg-opacity-80 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500 pr-10"
           placeholder="Enter a location"
         />
@@ -109,14 +114,6 @@ const Weather = () => {
         )}
       </div>
 
-      <div className="flex justify-center items-center w-full">
-        <button
-          onClick={handleWeather}
-          className="font-amaranth w-4/5 sm:w-2/3 md:w-1/3 py-3 text-white bg-gradient-to-r from-blue-400 to-indigo-600 rounded-lg shadow-md hover:from-blue-500 hover:to-indigo-700 transition-all font-bold text-lg sm:text-xl"
-        >
-          Get Weather
-        </button>
-      </div>
 
 
       {weatherReport.name && (

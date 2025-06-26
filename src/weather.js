@@ -131,7 +131,7 @@ const Weather = () => {
 
 
       {weatherReport.name && (
-        <div className="mt-4 p-4 bg-gray-200 bg-opacity-50 rounded-3xl shadow-lg">
+        <div className="mt-4 p-4 bg-gray-200 bg-opacity-50 rounded-3xl shadow-lg w-1/4">
 
           <CiStar
             onClick={addToFavorites}
@@ -160,13 +160,13 @@ const Weather = () => {
 
 
             <div className='flex flex-col items-center'>
-              <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750843411/weather/humidity_r9mzzr.png'></img></p>
+              <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750843411/weather/humidity_r9mzzr.png' alt='humidity'></img></p>
               <p className="text-md font-bold text-black">{weatherReport.main.humidity}%</p>
               <p className="text-sm text-gray-700">Humidity</p>
             </div>
 
             <div className='flex flex-col items-center'>
-              <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750844034/weather/high-temperature_ptwug6.png'></img></p>
+              <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750844034/weather/high-temperature_ptwug6.png' alt='max temperature'></img></p>
               <p className="text-md font-bold text-black">
                 {(weatherReport.main.temp_max - 273.15).toFixed(1)}°c
               </p>
@@ -174,7 +174,7 @@ const Weather = () => {
             </div>
 
             <div className='flex flex-col items-center'>
-              <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750844034/weather/low-temperature_zr5lwi.png'></img></p>
+              <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750844034/weather/low-temperature_zr5lwi.png' alt='min temperature'></img></p>
               <p className="text-md font-bold text-black">
                 {(weatherReport.main.temp_min - 273.15).toFixed(1)}°c
               </p>
@@ -187,7 +187,9 @@ const Weather = () => {
 
             <div className="flex flex-row w-full justify-center items-center">
               <div className="flex flex-col items-center w-1/2">
+                <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750928555/weather/sunrise_smvr3f.png' alt='sunrise'></img></p>
                 <p>Sunrise</p>
+
                 <p className="text-md font-bold text-blue-400">
                   {
                     new Intl.DateTimeFormat('en-US', {
@@ -203,6 +205,7 @@ const Weather = () => {
               <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-500 to-transparent mx-2" />
 
               <div className="flex flex-col items-center w-1/2">
+                <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750928555/weather/sunset_nqocdv.png' alt='sunset'></img></p>
                 <p>Sunset</p>
                 <p className="text-md font-bold text-blue-400">
                   {
@@ -220,6 +223,7 @@ const Weather = () => {
 
             <div className="flex flex-row w-full justify-center items-center">
               <div className="flex flex-col items-center w-1/2">
+                <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750929295/weather/wind_drw1vv.png' alt='wind speed'></img></p>
                 <p>Wind Spd</p>
                 <p className="text-md font-bold text-blue-400">
                   {weatherReport.wind.speed} m/s
@@ -230,6 +234,7 @@ const Weather = () => {
               <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-500 to-transparent mx-2" />
 
               <div className="flex flex-col items-center w-1/2">
+                <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750929481/weather/weather-vane_vzuxhl.png' alt='wind direction'></img></p>
                 <p>Wind Dir</p>
                 <p className="text-md font-bold text-blue-400">
                   {weatherReport.wind.deg}°

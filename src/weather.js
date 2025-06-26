@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Loader from './components/loader';
 import { CiStar } from "react-icons/ci";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -24,14 +25,14 @@ const Weather = () => {
 
     setLoading(true);
     try {
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apikey}`
-      );
+      const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apikey}`);
       const data = await res.json();
       if (data.cod === 200) {
         setWeatherReport(data);
       } else {
-        alert(data.message || 'Location not found');
+        // alert(data.message || 'Location not found');
+        toast.error("Location not found");
+
       }
     } catch (error) {
       console.error('Error while fetching data', error);
@@ -77,6 +78,19 @@ const Weather = () => {
 
       <h1 className="font-amaranth text-3xl sm:text-4xl md:text-5xl font-extrabold text-center h-max text-yellow-300 mb-6 tracking-widest drop-shadow-lg hover:drop-shadow-2xl transition-all duration-500 ease-in-out transform hover:scale-105 p-4 rounded-lg">WEATHER APP</h1>
 
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+
+      />
 
       {clicked && favorites.length > 0 && (
         <div className="bg-white bg-opacity-50 p-4 rounded-lg shadow-lg mb-10">

@@ -131,7 +131,7 @@ const Weather = () => {
 
 
       {weatherReport.name && (
-        <div className="mt-4 p-4 bg-gray-200 bg-opacity-50 rounded-3xl shadow-lg w-1/4">
+        <div className="mt-4 p-4 bg-gray-200 bg-opacity-50 rounded-3xl shadow-lg w-full sm:w-3/4 md:w-1/2 lg:w-1/4 h-full">
 
           <CiStar
             onClick={addToFavorites}

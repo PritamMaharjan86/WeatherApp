@@ -59,22 +59,44 @@ const Weather = () => {
 
     const weather = weatherReport.weather[0].main.toLowerCase();
 
-    switch (weather) {
+    switch (weather.toLowerCase()) {
       case 'clear':
         return 'clear-sky';
-      case 'rain':
-        return 'rainy';
+      case 'sunny':
+        return 'sunny';
       case 'clouds':
         return 'cloudy';
+      case 'rain':
+      case 'light rain':
+      case 'moderate rain':
+      case 'shower rain':
+        return 'rainy';
+      case 'thunderstorm':
+        return 'thunderstorm';
+      case 'snow':
+        return 'snow';
+      case 'fog':
+        return 'fog';
+      case 'haze':
+        return 'haze';
+      case 'mist':
+        return 'mist';
+      case 'overcast':
+        return 'overcast';
+      case 'wind':
+      case 'windy':
+        return 'windy';
       default:
         return 'clear-sky';
     }
+
   };
 
 
 
   return (
-    <div className={`flex flex-col items-center  min-h-screen ${getWeatherBackground()} bg-cover bg-center p-4 sm:p-6 md:p-8`}>
+    <div className={`w-full min-h-screen flex flex-col items-center justify-center ${getWeatherBackground()} bg-cover bg-center bg-no-repeat p-4 sm:p-6 md:p-8`}>
+
 
       <h1 className="font-amaranth text-3xl sm:text-4xl md:text-5xl font-extrabold text-center h-max text-yellow-300 mb-6 tracking-widest drop-shadow-lg hover:drop-shadow-2xl transition-all duration-500 ease-in-out transform hover:scale-105 p-4 rounded-lg">WEATHER APP</h1>
 
@@ -114,6 +136,7 @@ const Weather = () => {
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               e.preventDefault();
+              setLocation('');
               handleWeather();
             }
           }}
@@ -132,12 +155,31 @@ const Weather = () => {
 
       {weatherReport.name && (
         <div className="mt-4 p-4 bg-gray-200 bg-opacity-50 rounded-3xl shadow-lg w-full sm:w-3/4 md:w-1/2 lg:w-1/4 h-full">
-
           <CiStar
             onClick={addToFavorites}
             className={`text-2xl float-end font-bold ${clicked ? 'text-red-500' : 'text-yellow-200'}`}
           />
-          <p className="text-3xl text-white font-amaranth text-start">{weatherReport.name}</p>
+          <p className="text-5xl font-bold text-white font-amaranth text-start">{weatherReport.name}</p>
+          <p className="text-white text-sm ml-2 mt-2">
+            {
+              (() => {
+                const offset = weatherReport.timezone;
+                const utcNow = Date.now();
+                const localTime = new Date(utcNow + offset * 1000);
+
+                return localTime.toLocaleTimeString('en-US', {
+                  timeZone: 'UTC',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  second: '2-digit',
+                  hour12: false,
+                });
+              })()
+            }
+          </p>
+
+
+
           <div className="flex justify-between items-start w-full px-4">
             <div>
               <p className="text-5xl font-bold text-white font-amaranth mt-5 text-start">

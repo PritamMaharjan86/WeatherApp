@@ -154,7 +154,7 @@ const Weather = () => {
 
 
       {weatherReport.name && (
-        <div className="mt-4 p-4 bg-gray-200 bg-opacity-50 rounded-3xl shadow-lg w-full sm:w-3/4 md:w-1/2 lg:w-1/4 h-full">
+        <div className="mt-4 p-4  bg-gray-200 bg-opacity-50 rounded-3xl shadow-lg w-full sm:w-3/4 md:w-1/2 lg:w-1/4 h-full">
           <CiStar
             onClick={addToFavorites}
             className={`text-2xl float-end font-bold ${clicked ? 'text-red-500' : 'text-yellow-200'}`}
@@ -180,7 +180,7 @@ const Weather = () => {
 
 
 
-          <div className="flex justify-between items-start w-full px-4">
+          <div className="flex justify-between items-start w-full px-4 ">
             <div>
               <p className="text-5xl font-bold text-white font-amaranth mt-5 text-start">
                 {(weatherReport.main.temp - 273.15).toFixed(1)}°c
@@ -246,7 +246,7 @@ const Weather = () => {
 
               <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-500 to-transparent mx-2" />
 
-              <div className="flex flex-col items-center w-1/2">
+              <div className="flex flex-col items-center w-1/2 ">
                 <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750928555/weather/sunset_nqocdv.png' alt='sunset'></img></p>
                 <p>Sunset</p>
                 <p className="text-md font-bold text-blue-400">
@@ -286,10 +286,62 @@ const Weather = () => {
 
           </div>
 
+          <div className="bg-gray-300 shadow-xl rounded-xl p-4 text-black w-full max-w-sm space-y-3 text-sm sm:text-base mt-5">
 
+            <div className="relative pb-3">
+              <div className="flex justify-between items-center">
 
+                <span className="flex items-center opacity-80">
+                  <img
+                    className="w-6 h-6 mr-2"
+                    src="https://res.cloudinary.com/dedpvue13/image/upload/v1751112129/weather/hot_nkiuhk.png"
+                    alt="feels like"
+                  />
+                  Feels Like
+                </span>
+                <span className="font-mono font-bold text-blue-400">
+                  {(weatherReport.main.feels_like - 273.15).toFixed(1)}°C
+                </span>
+              </div>
 
+            </div>
 
+            <div className="relative pb-3">
+              <div className="flex justify-between items-center">
+                <span className="flex items-center opacity-80">
+                  <img
+                    className="w-6 h-6 mr-2"
+                    src="https://res.cloudinary.com/dedpvue13/image/upload/v1751111974/weather/sea-level_dnbddl.png"
+                    alt="sea level"
+                  />
+                 Sea Level
+                </span>
+
+                <span className="font-mono font-bold text-blue-400">
+                  {weatherReport.main.sea_level}
+                </span>
+              </div>
+
+            </div>
+
+            <div className="relative pb-3">
+              <div className="flex justify-between items-center">
+                <span className="flex items-center opacity-80">
+                  <img
+                    className="w-6 h-6 mr-2"
+                    src="https://res.cloudinary.com/dedpvue13/image/upload/v1751111323/weather/high-tide_xuussp.png"
+                    alt="ground level"
+                  />
+                  Ground Level
+                </span>
+
+                <span className="font-mono font-bold text-blue-400">
+                  {weatherReport.main.grnd_level}
+                </span>
+              </div>
+
+            </div>
+          </div>
 
         </div>
       )}

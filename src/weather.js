@@ -203,24 +203,24 @@ const Weather = () => {
 
             <div className='flex flex-col items-center'>
               <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750843411/weather/humidity_r9mzzr.png' alt='humidity'></img></p>
-              <p className="text-md font-bold text-black">{weatherReport.main.humidity}%</p>
-              <p className="text-sm text-gray-700">Humidity</p>
+              <p className="text-md font-bold text-blue-500">{weatherReport.main.humidity}%</p>
+              <p className="text-sm">Humidity</p>
             </div>
 
             <div className='flex flex-col items-center'>
               <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750844034/weather/high-temperature_ptwug6.png' alt='max temperature'></img></p>
-              <p className="text-md font-bold text-black">
+              <p className="text-md font-bold text-blue-500">
                 {(weatherReport.main.temp_max - 273.15).toFixed(1)}°c
               </p>
-              <p className="text-sm text-gray-700">Max</p>
+              <p className="text-sm">High</p>
             </div>
 
             <div className='flex flex-col items-center'>
               <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750844034/weather/low-temperature_zr5lwi.png' alt='min temperature'></img></p>
-              <p className="text-md font-bold text-black">
+              <p className="text-md font-bold text-blue-500">
                 {(weatherReport.main.temp_min - 273.15).toFixed(1)}°c
               </p>
-              <p className="text-sm text-gray-700">Min</p>
+              <p className="text-sm">Low</p>
             </div>
 
           </div>
@@ -230,7 +230,7 @@ const Weather = () => {
             <div className="flex flex-row w-full justify-center items-center">
               <div className="flex flex-col items-center w-1/2">
                 <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750928555/weather/sunrise_smvr3f.png' alt='sunrise'></img></p>
-                <p>Sunrise</p>
+                <p className='text-sm'>Sunrise</p>
 
                 <p className="text-md font-bold text-blue-400">
                   {
@@ -248,7 +248,7 @@ const Weather = () => {
 
               <div className="flex flex-col items-center w-1/2 ">
                 <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750928555/weather/sunset_nqocdv.png' alt='sunset'></img></p>
-                <p>Sunset</p>
+                <p className='text-sm'>Sunset</p>
                 <p className="text-md font-bold text-blue-400">
                   {
                     new Intl.DateTimeFormat('en-US', {
@@ -266,7 +266,7 @@ const Weather = () => {
             <div className="flex flex-row w-full justify-center items-center">
               <div className="flex flex-col items-center w-1/2">
                 <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750929295/weather/wind_drw1vv.png' alt='wind speed'></img></p>
-                <p>Wind Spd</p>
+                <p className='text-sm'>Wind Speed</p>
                 <p className="text-md font-bold text-blue-400">
                   {weatherReport.wind.speed} m/s
                 </p>
@@ -277,7 +277,7 @@ const Weather = () => {
 
               <div className="flex flex-col items-center w-1/2">
                 <p><img className='w-6 h-6' src='https://res.cloudinary.com/dedpvue13/image/upload/v1750929481/weather/weather-vane_vzuxhl.png' alt='wind direction'></img></p>
-                <p>Wind Dir</p>
+                <p className='text-sm '>Wind Direction</p>
                 <p className="text-md font-bold text-blue-400">
                   {weatherReport.wind.deg}°
                 </p>
@@ -291,7 +291,7 @@ const Weather = () => {
             <div className="relative pb-3">
               <div className="flex justify-between items-center">
 
-                <span className="flex items-center opacity-80">
+                <span className="flex items-center opacity-80 text-sm">
                   <img
                     className="w-6 h-6 mr-2"
                     src="https://res.cloudinary.com/dedpvue13/image/upload/v1751112129/weather/hot_nkiuhk.png"
@@ -308,17 +308,17 @@ const Weather = () => {
 
             <div className="relative pb-3">
               <div className="flex justify-between items-center">
-                <span className="flex items-center opacity-80">
+                <span className="flex items-center opacity-80 text-sm">
                   <img
                     className="w-6 h-6 mr-2"
                     src="https://res.cloudinary.com/dedpvue13/image/upload/v1751111974/weather/sea-level_dnbddl.png"
                     alt="sea level"
                   />
-                 Sea Level
+                  Sea Level
                 </span>
 
                 <span className="font-mono font-bold text-blue-400">
-                  {weatherReport.main.sea_level}
+                  {weatherReport.main.sea_level} hPa
                 </span>
               </div>
 
@@ -326,7 +326,7 @@ const Weather = () => {
 
             <div className="relative pb-3">
               <div className="flex justify-between items-center">
-                <span className="flex items-center opacity-80">
+                <span className="flex items-center opacity-80 text-sm">
                   <img
                     className="w-6 h-6 mr-2"
                     src="https://res.cloudinary.com/dedpvue13/image/upload/v1751111323/weather/high-tide_xuussp.png"
@@ -336,7 +336,25 @@ const Weather = () => {
                 </span>
 
                 <span className="font-mono font-bold text-blue-400">
-                  {weatherReport.main.grnd_level}
+                  {weatherReport.main.grnd_level} hPa
+                </span>
+              </div>
+
+            </div>
+
+            <div className="relative pb-3">
+              <div className="flex justify-between items-center">
+                <span className="flex items-center opacity-80 text-sm">
+                  <img
+                    className="w-6 h-6 mr-2"
+                    src="https://res.cloudinary.com/dedpvue13/image/upload/v1751166129/weather/pressure_1_f1vh1q.png"
+                    alt="pressure"
+                  />
+                  Pressure
+                </span>
+
+                <span className="font-mono font-bold text-blue-400">
+                  {weatherReport.main.pressure} hPa
                 </span>
               </div>
 

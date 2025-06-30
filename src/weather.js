@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Loader from './components/loader';
-import { CiStar } from "react-icons/ci";
 import { ToastContainer, toast } from 'react-toastify';
 
 
@@ -9,8 +8,6 @@ const Weather = () => {
   const [location, setLocation] = useState('');
   const [weatherReport, setWeatherReport] = useState({});
   const [loading, setLoading] = useState(false);
-  const [favorites, setFavorites] = useState([]);
-  const [clicked, setClicked] = useState(false);
 
   const handleLocation = (e) => {
     const value = e.target.value;
@@ -42,17 +39,6 @@ const Weather = () => {
     }
   };
 
-  const addToFavorites = () => {
-    if (weatherReport.name && !favorites.find(fav => fav.name === weatherReport.name)) {
-      setFavorites([...favorites, {
-        name: weatherReport.name,
-        temp: (weatherReport.main.temp - 273.15).toFixed(1)
-      }]);
-      setClicked(true);
-    } else {
-      setClicked(false);
-    }
-  };
 
   const getWeatherBackground = () => {
     if (!weatherReport.weather) return 'clear-sky';
@@ -114,19 +100,6 @@ const Weather = () => {
 
       />
 
-      {clicked && favorites.length > 0 && (
-        <div className="bg-white bg-opacity-50 p-4 rounded-lg shadow-lg mb-10">
-          <h2 className="text-2xl font-bold mb-4 text-yellow-200 font-amaranth">Favorite Locations</h2>
-          <ul className="space-y-2">
-            {favorites.map((fav, index) => (
-              <li key={index}>
-                <span className='font-bold text-xl font-amaranth'>{fav.name} : </span>
-                <span className="text-blue-400 text-xl font-bold font-amaranth">{fav.temp}°C</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       <div className="relative">
         <input
@@ -155,10 +128,6 @@ const Weather = () => {
 
       {weatherReport.name && (
         <div className="mt-4 p-4  bg-gray-200 bg-opacity-50 rounded-3xl shadow-lg w-full sm:w-3/4 md:w-1/2 lg:w-1/4 h-full">
-          <CiStar
-            onClick={addToFavorites}
-            className={`text-2xl float-end font-bold ${clicked ? 'text-red-500' : 'text-yellow-200'}`}
-          />
           <p className="text-5xl font-bold text-white font-amaranth text-start">{weatherReport.name}</p>
           <p className="text-white text-sm ml-2 mt-2">
             {

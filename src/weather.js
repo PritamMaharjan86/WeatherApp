@@ -255,7 +255,7 @@ const Weather = () => {
 
           </div>
 
-          <div className="bg-gray-300 shadow-xl rounded-xl p-4 text-black w-full max-w-sm space-y-3 text-sm sm:text-base mt-5">
+          <div className="p-4 mt-5 rounded-xl bg-gray-300 shadow-xl flex flex-col space-y-4">
 
             <div className="relative pb-3">
               <div className="flex justify-between items-center">
